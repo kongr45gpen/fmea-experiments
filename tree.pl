@@ -5,6 +5,10 @@ pind(event2, 0.3).
 
 p(A, P) :- pind(A, P).
 
+p(not(A), P) :-
+    p(A, PN),
+    P is 1 - PN.
+
 p(and(A, A) , P) :-
     p(A, P).
 
@@ -21,3 +25,4 @@ p(or(A, B) , P) :-
     pind(A, P1),
     pind(B, P2),
     P is 1 - (1 - P1) * (1 - P2).
+    
